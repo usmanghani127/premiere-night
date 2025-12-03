@@ -8,24 +8,28 @@
 import { useLocalization } from '@localization/useLocalization';
 import { RootNavigator } from '@navigation/RootNavigator';
 import { NavigationContainer } from '@react-navigation/native';
+import { store } from '@services/redux';
 import { PaperTheme } from '@theme/colors';
 import { StatusBar, useColorScheme } from 'react-native';
 import { PaperProvider } from 'react-native-paper';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { Provider } from 'react-redux';
 
 function App() {
   useLocalization();
   const isDarkMode = useColorScheme() === 'dark';
 
   return (
-    <PaperProvider theme={PaperTheme}>
-      <SafeAreaProvider>
-        <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-        <NavigationContainer>
-          <RootNavigator />
-        </NavigationContainer>
-      </SafeAreaProvider>
-    </PaperProvider>
+    <Provider store={store}>
+      <PaperProvider theme={PaperTheme}>
+        <SafeAreaProvider>
+          <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
+          <NavigationContainer>
+            <RootNavigator />
+          </NavigationContainer>
+        </SafeAreaProvider>
+      </PaperProvider>
+    </Provider>
   );
 }
 

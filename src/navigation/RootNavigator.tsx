@@ -1,17 +1,22 @@
+import { useStore } from '@hooks/useStore';
+import { RootNavigatorParamList } from '@navigation/types';
 import { useNavigation } from '@react-navigation/native';
 import {
   createNativeStackNavigator,
   NativeStackNavigationProp,
 } from '@react-navigation/native-stack';
+import { CounterActions } from '@services/redux/slices/counter';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { StyleSheet, Text, useColorScheme, View } from 'react-native';
 import { Button } from 'react-native-paper';
-import { RootNavigatorParamList } from './types';
 
 const HomeScreen = () => {
   const { t } = useTranslation();
   const isDarkMode = useColorScheme() === 'dark';
+  const { data: counterValue, dispatch } = useStore(
+    state => state.counter.value,
+  );
 
   return (
     <View
@@ -20,6 +25,23 @@ const HomeScreen = () => {
       <Text style={[styles.text, isDarkMode ? dark.text : light.text]}>
         {t('HomeScreen.label')}
       </Text>
+      <Button
+        icon="minus"
+        mode="contained"
+        onPress={() => dispatch(CounterActions.decrement())}
+      >
+        {t('HomeScreen.decrement')}
+      </Button>
+      <Text style={[styles.text, isDarkMode ? dark.text : light.text]}>
+        {t('HomeScreen.counter')}: {counterValue}
+      </Text>
+      <Button
+        icon="plus"
+        mode="contained"
+        onPress={() => dispatch(CounterActions.increment())}
+      >
+        {t('HomeScreen.increment')}
+      </Button>
     </View>
   );
 };
@@ -81,6 +103,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+    padding: 20,
   },
   text: {
     fontSize: 22,

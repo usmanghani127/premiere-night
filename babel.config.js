@@ -11,6 +11,8 @@ module.exports = {
       {
         root: ['./src'],
         alias: {
+          '@hooks': './src/hooks',
+          '@services': './src/services',
           '@theme': './src/theme',
           '@navigation': './src/navigation',
           '@localization': './src/localization',
