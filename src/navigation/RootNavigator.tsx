@@ -4,11 +4,13 @@ import {
   NativeStackNavigationProp,
 } from '@react-navigation/native-stack';
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { StyleSheet, Text, useColorScheme, View } from 'react-native';
 import { Button } from 'react-native-paper';
 import { RootNavigatorParamList } from './types';
 
 const HomeScreen = () => {
+  const { t } = useTranslation();
   const isDarkMode = useColorScheme() === 'dark';
 
   return (
@@ -16,13 +18,14 @@ const HomeScreen = () => {
       style={[styles.container, isDarkMode ? dark.container : light.container]}
     >
       <Text style={[styles.text, isDarkMode ? dark.text : light.text]}>
-        Home Screen
+        {t('HomeScreen.label')}
       </Text>
     </View>
   );
 };
 
 const LandingScreen = () => {
+  const { t } = useTranslation();
   const isDarkMode = useColorScheme() === 'dark';
   const { navigate } =
     useNavigation<
@@ -34,14 +37,14 @@ const LandingScreen = () => {
       style={[styles.container, isDarkMode ? dark.container : light.container]}
     >
       <Text style={[styles.text, isDarkMode ? dark.text : light.text]}>
-        Landing Screen
+        {t('LandingScreen.label')}
       </Text>
       <Button
         icon="coffee-outline"
         mode="contained"
         onPress={() => navigate('Home')}
       >
-        Navigate to Home Screen
+        {t('LandingScreen.navigateToHomeScreen')}
       </Button>
     </View>
   );
@@ -50,6 +53,7 @@ const LandingScreen = () => {
 const Stack = createNativeStackNavigator<RootNavigatorParamList>();
 
 export const RootNavigator = () => {
+  const { t } = useTranslation();
   const isDarkMode = useColorScheme() === 'dark';
   return (
     <Stack.Navigator
@@ -58,8 +62,16 @@ export const RootNavigator = () => {
         headerTintColor: isDarkMode ? 'white' : 'black',
       }}
     >
-      <Stack.Screen name="Landing" component={LandingScreen} />
-      <Stack.Screen name="Home" component={HomeScreen} />
+      <Stack.Screen
+        name="Landing"
+        component={LandingScreen}
+        options={{ headerTitle: t('LandingScreen.headerTitle') }}
+      />
+      <Stack.Screen
+        name="Home"
+        component={HomeScreen}
+        options={{ headerTitle: t('HomeScreen.headerTitle') }}
+      />
     </Stack.Navigator>
   );
 };

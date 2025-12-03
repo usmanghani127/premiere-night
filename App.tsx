@@ -9,10 +9,12 @@ import { NavigationContainer } from '@react-navigation/native';
 import { StatusBar, useColorScheme } from 'react-native';
 import { PaperProvider } from 'react-native-paper';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { useLocalization } from './src/localization/useLocalization';
 import { RootNavigator } from './src/navigation/RootNavigator';
 import { PaperTheme } from './src/theme/colors';
 
 function App() {
+  useLocalization();
   const isDarkMode = useColorScheme() === 'dark';
 
   return (

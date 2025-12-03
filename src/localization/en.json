@@ -1,0 +1,11 @@
+{
+  "LandingScreen": {
+    "headerTitle": "Landing",
+    "label": "Landing Screen...",
+    "navigateToHomeScreen": "Navigate to Home Screen"
+  },
+  "HomeScreen": {
+    "headerTitle": "Home",
+    "label": "Home Screen..."
+  }
+}
