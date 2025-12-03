@@ -4,7 +4,8 @@ import {
   NativeStackNavigationProp,
 } from '@react-navigation/native-stack';
 import React from 'react';
-import { Button, StyleSheet, Text, useColorScheme, View } from 'react-native';
+import { StyleSheet, Text, useColorScheme, View } from 'react-native';
+import { Button } from 'react-native-paper';
 import { RootNavigatorParamList } from './types';
 
 const HomeScreen = () => {
@@ -36,9 +37,12 @@ const LandingScreen = () => {
         Landing Screen
       </Text>
       <Button
+        icon="coffee-outline"
+        mode="contained"
         onPress={() => navigate('Home')}
-        title="Navigate to Home Screen"
-      />
+      >
+        Navigate to Home Screen
+      </Button>
     </View>
   );
 };
