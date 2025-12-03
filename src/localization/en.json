@@ -6,9 +6,6 @@
   },
   "HomeScreen": {
     "headerTitle": "Home",
-    "label": "Home Screen...",
-    "counter": "Counter",
-    "increment": "Increment",
-    "decrement": "Decrement"
+    "label": "Home Screen..."
   }
 }

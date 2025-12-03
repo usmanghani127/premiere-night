@@ -21,7 +21,7 @@ const persistConfig: PersistConfig<RootState> = {
   key: 'root',
   version: 1,
   storage: AsyncStorage,
-  blacklist: ['counter'],
+  blacklist: [],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
