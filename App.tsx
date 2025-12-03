@@ -5,10 +5,14 @@
  * @format
  */
 
-import { StatusBar, StyleSheet, Text, useColorScheme, View } from 'react-native';
 import {
-  SafeAreaProvider,
-} from 'react-native-safe-area-context';
+  StatusBar,
+  StyleSheet,
+  Text,
+  useColorScheme,
+  View,
+} from 'react-native';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 function App() {
   const isDarkMode = useColorScheme() === 'dark';
@@ -16,8 +20,15 @@ function App() {
   return (
     <SafeAreaProvider>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <View style={[styles.container, isDarkMode ? dark.container : light.container]}>
-        <Text style={[styles.text, isDarkMode ? dark.text : light.text]}>Hello World</Text>
+      <View
+        style={[
+          styles.container,
+          isDarkMode ? dark.container : light.container,
+        ]}
+      >
+        <Text style={[styles.text, isDarkMode ? dark.text : light.text]}>
+          Hello World
+        </Text>
       </View>
     </SafeAreaProvider>
   );
@@ -31,27 +42,26 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 22,
-    fontWeight: 'bold'
-  }
+    fontWeight: 'bold',
+  },
 });
 
 const light = StyleSheet.create({
   container: {
-    backgroundColor: 'white'
+    backgroundColor: 'white',
   },
   text: {
-    color: 'black'
-  }
+    color: 'black',
+  },
 });
 
 const dark = StyleSheet.create({
   container: {
-    backgroundColor: 'black'
+    backgroundColor: 'black',
   },
   text: {
-    color: 'white'
-  }
+    color: 'white',
+  },
 });
-
 
 export default App;
