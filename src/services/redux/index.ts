@@ -1,11 +1,17 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
+import reactotron from '../../../ReactotronConfig';
 import { CounterReducer } from './slices/counter';
 
 export const store = configureStore({
   reducer: {
     counter: CounterReducer,
   },
+  enhancers: getDefaultEnhancers =>
+    __DEV__
+      ? getDefaultEnhancers().concat(reactotron.createEnhancer!())
+      : getDefaultEnhancers(),
+  devTools: __DEV__,
 });
 
 // Infer the `RootState` and `AppDispatch` types from the store itself
