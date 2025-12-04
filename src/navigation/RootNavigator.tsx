@@ -6,39 +6,30 @@ import {
 } from '@react-navigation/native-stack';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { StyleSheet, Text, useColorScheme, View } from 'react-native';
+import { Text, useColorScheme, View } from 'react-native';
 import { Button } from 'react-native-paper';
+import styled, { DefaultTheme } from 'styled-components';
 
 const HomeScreen = () => {
   const { t } = useTranslation();
-  const isDarkMode = useColorScheme() === 'dark';
 
   return (
-    <View
-      style={[styles.container, isDarkMode ? dark.container : light.container]}
-    >
-      <Text style={[styles.text, isDarkMode ? dark.text : light.text]}>
-        {t('HomeScreen.label')}
-      </Text>
-    </View>
+    <Container>
+      <Label>{t('HomeScreen.label')}</Label>
+    </Container>
   );
 };
 
 const LandingScreen = () => {
   const { t } = useTranslation();
-  const isDarkMode = useColorScheme() === 'dark';
   const { navigate } =
     useNavigation<
       NativeStackNavigationProp<RootNavigatorParamList, 'Landing'>
     >();
 
   return (
-    <View
-      style={[styles.container, isDarkMode ? dark.container : light.container]}
-    >
-      <Text style={[styles.text, isDarkMode ? dark.text : light.text]}>
-        {t('LandingScreen.label')}
-      </Text>
+    <Container>
+      <Label>{t('LandingScreen.label')}</Label>
       <Button
         icon="coffee-outline"
         mode="contained"
@@ -46,7 +37,7 @@ const LandingScreen = () => {
       >
         {t('LandingScreen.navigateToHomeScreen')}
       </Button>
-    </View>
+    </Container>
   );
 };
 
@@ -55,6 +46,7 @@ const Stack = createNativeStackNavigator<RootNavigatorParamList>();
 export const RootNavigator = () => {
   const { t } = useTranslation();
   const isDarkMode = useColorScheme() === 'dark';
+
   return (
     <Stack.Navigator
       screenOptions={{
@@ -76,34 +68,21 @@ export const RootNavigator = () => {
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
+const Container = styled(View)<{ theme: DefaultTheme }>(
+  ({ theme: { layout = {} } = {} }) => ({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
     padding: 20,
-  },
-  text: {
+    backgroundColor: layout.isDarkMode ? 'black' : 'white',
+  }),
+);
+
+const Label = styled(Text)<{ theme: DefaultTheme }>(
+  ({ theme: { layout = {} } = {} }) => ({
     fontSize: 22,
     fontWeight: 'bold',
     margin: 20,
-  },
-});
-
-const light = StyleSheet.create({
-  container: {
-    backgroundColor: 'white',
-  },
-  text: {
-    color: 'black',
-  },
-});
-
-const dark = StyleSheet.create({
-  container: {
-    backgroundColor: 'black',
-  },
-  text: {
-    color: 'white',
-  },
-});
+    color: layout.isDarkMode ? 'white' : 'black',
+  }),
+);
