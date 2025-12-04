@@ -7,6 +7,7 @@ export const Container = styled(SafeAreaView)<{ theme: DefaultTheme }>(
   ({ theme: { layout = {} } = {} }) => ({
     flex: 1,
     backgroundColor: layout.isDarkMode ? 'black' : 'white',
+    paddingHorizontal: 20,
   }),
 );
 
@@ -31,7 +32,6 @@ export const HeaderRow = styled(View)<{ theme: DefaultTheme }>(({ theme }) => ({
   alignItems: 'center',
   justifyContent: 'space-between',
   backgroundColor: theme.layout.isDarkMode ? Colors.black : Colors.white,
-  paddingHorizontal: 10,
   paddingVertical: 5,
 }));
 

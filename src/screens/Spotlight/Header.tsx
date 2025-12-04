@@ -19,7 +19,7 @@ export const Header = () => {
       <SearchBar
         ref={searchBarRef}
         placeholder={t('Search.placeholder')}
-        editable={false}
+        disabled={true}
         onPress={() => navigation.navigate('Search')}
       />
     </HeaderRow>

@@ -13,7 +13,6 @@ export const StyledSearchBar = styled(TextInput).attrs({
 })<{ theme: DefaultTheme }>(({ theme }) => ({
   flex: 1,
   backgroundColor: theme.layout.isDarkMode ? Colors.darkGray : Colors.lightGray,
-  marginHorizontal: 5,
   borderRadius: 10,
   height: 45,
 }));
