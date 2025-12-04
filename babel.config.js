@@ -19,6 +19,7 @@ module.exports = {
         },
         extensions: ['.ts', '.tsx', '.js', '.json'],
       },
+      'babel-plugin-react-compiler',
     ],
   ],
 };
