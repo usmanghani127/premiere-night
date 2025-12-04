@@ -8,6 +8,7 @@
     "paths": {
       "@hooks/*": ["hooks/*"],
       "@common/*": ["common/*"],
+      "@screens/*": ["screens/*"],
       "@services/*": ["services/*"],
       "@theme/*": ["theme/*"],
       "@navigation/*": ["navigation/*"],

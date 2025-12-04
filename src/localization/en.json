@@ -1,11 +1,15 @@
 {
-  "LandingScreen": {
-    "headerTitle": "Landing",
-    "label": "Landing Screen...",
-    "navigateToHomeScreen": "Navigate to Home Screen"
+  "Spotlight": {
+    "tabBarLabel": "Spotlight",
+    "label": "Spotlight Screen..."
   },
-  "HomeScreen": {
-    "headerTitle": "Home",
-    "label": "Home Screen..."
+  "Watchlist": {
+    "tabBarLabel": "Watchlist",
+    "label": "Watchlist Screen..."
+  },
+  "Search": {
+    "label": "Search Screen...",
+    "clear": "Clear",
+    "placeholder": "Search for movies..."
   }
 }

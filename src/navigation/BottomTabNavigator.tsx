@@ -1,82 +1,49 @@
-import { createNativeBottomTabNavigator } from '@react-navigation/bottom-tabs/unstable';
-import { useNavigation } from '@react-navigation/native';
-import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { Spotlight } from '@screens/Spotlight';
+import { SpotlightTabIcon } from '@screens/Spotlight/TabIcon';
+import { Watchlist } from '@screens/Watchlist';
+import { WatchlistTabIcon } from '@screens/Watchlist/TabIcon';
 import { Colors } from '@theme/colors';
 import { useTranslation } from 'react-i18next';
-import { Text, useColorScheme, View } from 'react-native';
-import { Button } from 'react-native-paper';
-import styled, { DefaultTheme } from 'styled-components';
-import { AppNavigatorProps } from './types';
+import { useColorScheme } from 'react-native';
 
-const Tab = createNativeBottomTabNavigator();
-
-const HomeScreen = () => {
-  const { t } = useTranslation();
-
-  return (
-    <Container>
-      <Label>{t('HomeScreen.label')}</Label>
-    </Container>
-  );
-};
-
-const LandingScreen = () => {
-  const { t } = useTranslation();
-  const { navigate } =
-    useNavigation<NativeStackNavigationProp<AppNavigatorProps, 'Landing'>>();
-
-  return (
-    <Container>
-      <Label>{t('LandingScreen.label')}</Label>
-      <Button
-        icon="coffee-outline"
-        mode="contained"
-        onPress={() => navigate('Home')}
-      >
-        {t('LandingScreen.navigateToHomeScreen')}
-      </Button>
-    </Container>
-  );
-};
+const Tab = createBottomTabNavigator();
 
 export const BottomTabs = () => {
+  const { t } = useTranslation();
   const isDarkMode = useColorScheme() === 'dark';
+
   return (
     <Tab.Navigator
       screenOptions={{
+        headerShown: false,
         tabBarStyle: {
-          backgroundColor: 'transparent',
+          backgroundColor: isDarkMode ? Colors.black : Colors.white,
+          borderTopWidth: 0,
         },
         tabBarActiveTintColor: Colors.primary,
-        tabBarInactiveTintColor: isDarkMode ? 'white' : 'black',
-        tabBarActiveIndicatorEnabled: false,
+        tabBarInactiveTintColor: isDarkMode ? Colors.white : Colors.black,
         tabBarLabelStyle: {
           fontWeight: 'bold',
-          fontSize: 14,
         },
       }}
     >
-      <Tab.Screen name="Landing" component={LandingScreen} />
-      <Tab.Screen name="Home" component={HomeScreen} />
+      <Tab.Screen
+        name="Spotlight"
+        component={Spotlight}
+        options={{
+          tabBarLabel: t('Spotlight.tabBarLabel'),
+          tabBarIcon: SpotlightTabIcon,
+        }}
+      />
+      <Tab.Screen
+        name="Watchlist"
+        component={Watchlist}
+        options={{
+          tabBarLabel: t('Watchlist.tabBarLabel'),
+          tabBarIcon: WatchlistTabIcon,
+        }}
+      />
     </Tab.Navigator>
   );
 };
-
-const Container = styled(View)<{ theme: DefaultTheme }>(
-  ({ theme: { layout = {} } = {} }) => ({
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: 20,
-    backgroundColor: layout.isDarkMode ? 'black' : 'white',
-  }),
-);
-
-const Label = styled(Text)<{ theme: DefaultTheme }>(
-  ({ theme: { layout = {} } = {} }) => ({
-    fontSize: 22,
-    fontWeight: 'bold',
-    margin: 20,
-    color: layout.isDarkMode ? 'white' : 'black',
-  }),
-);

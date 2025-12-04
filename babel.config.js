@@ -13,6 +13,7 @@ module.exports = {
         alias: {
           '@hooks': './src/hooks',
           '@common': './src/common',
+          '@screens': './src/screens',
           '@services': './src/services',
           '@theme': './src/theme',
           '@navigation': './src/navigation',

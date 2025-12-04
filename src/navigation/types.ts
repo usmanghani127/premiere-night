@@ -1,16 +1,18 @@
 export type RootNavigatorParamList = {
   BottomTabs: undefined;
+  Search: undefined;
 };
 
 export type BottomTabNavigatorParamList = {
-  Landing: undefined;
-  Home: undefined;
+  Spotlight: undefined;
+  Watchlist: undefined;
 };
 
 export type AppNavigatorProps = RootNavigatorParamList &
   BottomTabNavigatorParamList;
 
 export enum RouteKeys {
-  LANDING = 'Landing',
-  HOME = 'Home',
+  Spotlight = 'Spotlight',
+  Watchlist = 'Watchlist',
+  Search = 'Search',
 }
