@@ -10,6 +10,7 @@ export const Colors = {
   gray: '#888888',
   darkGray: '#333333',
   red: '#FF5252',
+  overlay: `rgba(0, 0, 0, 0.5)`,
 };
 
 export const PaperTheme = {

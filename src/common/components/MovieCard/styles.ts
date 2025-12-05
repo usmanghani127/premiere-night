@@ -4,9 +4,10 @@ import styled, { DefaultTheme } from 'styled-components';
 
 export const Card = styled(TouchableOpacity).attrs({
   activeOpacity: 0.8,
-})<{ theme: DefaultTheme }>(({ theme }) => ({
-  width: theme.layout.smallerDimension * 0.4,
-  marginRight: 12,
+})<{ theme: DefaultTheme; width?: number | string }>(({ theme, width }) => ({
+  width: width || theme.layout.smallerDimension * 0.4,
+  marginRight: width ? 0 : 12,
+  marginBottom: width ? 12 : 0,
   borderRadius: 10,
   backgroundColor: theme.layout.isDarkMode ? Colors.darkGray : Colors.lightGray,
 }));
@@ -22,7 +23,6 @@ export const PosterImage = styled(Image)<{ theme: DefaultTheme }>(
 );
 
 export const InfoContainer = styled(View)({
-  flex: 1,
   padding: 10,
   justifyContent: 'space-between',
 });
@@ -43,4 +43,14 @@ export const Rating = styled(Text)({
   fontSize: 12,
   color: Colors.primary,
   fontWeight: 'bold',
+});
+
+export const ActionButton = styled(TouchableOpacity)({
+  position: 'absolute',
+  top: 8,
+  right: 8,
+  zIndex: 10,
+  backgroundColor: Colors.overlay,
+  borderRadius: 20,
+  padding: 6,
 });

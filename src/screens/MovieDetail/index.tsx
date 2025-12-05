@@ -1,9 +1,11 @@
 import { TMDB_IMAGE_BASE_URL } from '@common/constants';
+import { useStore } from '@hooks/useStore';
 import MaterialDesignIcons from '@react-native-vector-icons/material-design-icons';
 import { RouteProp, useRoute } from '@react-navigation/native';
 import { detailsApi } from '@services/api/tmdb/details';
+import { WatchlistActions } from '@services/redux/watchlist';
 import { Colors } from '@theme/colors';
-import React, { useState } from 'react';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { RootNavigatorParamList } from '../../navigation/types';
 import {
@@ -35,26 +37,34 @@ export const MovieDetail = () => {
   const { t } = useTranslation();
   const route = useRoute<MovieDetailRouteProp>();
   const { movieId } = route.params;
-  const [isInWatchlist, setIsInWatchlist] = useState(false);
+  const { data: watchlist, dispatch } = useStore(
+    state => state.watchlist.items,
+  );
+  const { data: movieDetails } = detailsApi.useGetMovieDetailsQuery(movieId);
+
+  const isInWatchlist = watchlist.includes(movieId);
+
   const {
-    data: {
-      posterPath = '',
-      title = '',
-      voteAverage = 0,
-      releaseDate = '',
-      overview = '',
-      runtime = 0,
-      genres = [],
-      tagline = '',
-      status = '',
-      productionCompanies = [],
-    } = {},
-  } = detailsApi.useGetMovieDetailsQuery(movieId);
+    posterPath = '',
+    title = '',
+    voteAverage = 0,
+    releaseDate = '',
+    overview = '',
+    runtime = 0,
+    genres = [],
+    tagline = '',
+    status = '',
+    productionCompanies = [],
+  } = movieDetails || {};
 
   const posterUrl = `${TMDB_IMAGE_BASE_URL.w780}${posterPath}`;
 
   const toggleWatchlist = () => {
-    setIsInWatchlist(!isInWatchlist);
+    if (isInWatchlist) {
+      dispatch(WatchlistActions.removeFromWatchlist(movieId));
+    } else {
+      dispatch(WatchlistActions.addToWatchlist(movieId));
+    }
   };
 
   return (

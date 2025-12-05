@@ -1,13 +1,21 @@
-import { useTranslation } from 'react-i18next';
-import { Body, Container, Label } from './styles';
+import { ListView } from '@common/components/ListView';
+import { useStore } from '@hooks/useStore';
+import { Header } from '@screens/Spotlight/Header';
+import { Body, Container } from './styles';
+import { WatchlistItem } from './WatchlistItem';
 
 export const Watchlist = () => {
-  const { t } = useTranslation();
+  const { data: watchlist } = useStore(state => state.watchlist.items);
 
   return (
     <Container>
+      <Header />
       <Body>
-        <Label>{t('Watchlist.label')}</Label>
+        <ListView
+          data={watchlist}
+          renderItem={({ item }) => <WatchlistItem movieId={item} />}
+          keyExtractor={item => item.toString()}
+        />
       </Body>
     </Container>
   );
