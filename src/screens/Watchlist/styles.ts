@@ -1,4 +1,4 @@
-import { View } from 'react-native';
+import { Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import styled, { DefaultTheme } from 'styled-components';
 
@@ -14,3 +14,12 @@ export const Body = styled(View)<{ theme: DefaultTheme }>({
   flex: 1,
   paddingVertical: 20,
 });
+
+export const EmptyText = styled(Text)<{ theme: DefaultTheme }>(
+  ({ theme: { layout = {} } = {} }) => ({
+    fontSize: 16,
+    textAlign: 'center',
+    color: layout.isDarkMode ? '#888' : '#666',
+    marginTop: 40,
+  }),
+);

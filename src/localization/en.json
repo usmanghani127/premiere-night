@@ -11,7 +11,8 @@
   },
   "Watchlist": {
     "tabBarLabel": "Watchlist",
-    "label": "Watchlist Screen..."
+    "label": "Watchlist Screen...",
+    "empty": "Your watchlist is empty.\nStart adding movies to watch later!"
   },
   "Search": {
     "label": "Search Screen...",
