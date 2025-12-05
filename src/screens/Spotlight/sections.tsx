@@ -21,6 +21,7 @@ export const NowPlayingSection = () => {
     <MovieSection
       title={t('Spotlight.sections.nowPlaying')}
       movies={results}
+      isLoading={isFetching}
       onEndReached={() => {
         if (results.length > 0 && page < totalPages && !isFetching) {
           trigger(page + 1);
@@ -43,6 +44,7 @@ export const PopularSection = () => {
     <MovieSection
       title={t('Spotlight.sections.popular')}
       movies={results}
+      isLoading={isFetching}
       onEndReached={() => {
         if (results.length > 0 && page < totalPages && !isFetching) {
           trigger(page + 1);
@@ -65,6 +67,7 @@ export const TopRatedSection = () => {
     <MovieSection
       title={t('Spotlight.sections.topRated')}
       movies={results}
+      isLoading={isFetching}
       onEndReached={() => {
         if (results.length > 0 && page < totalPages && !isFetching) {
           trigger(page + 1);
@@ -87,6 +90,7 @@ export const UpcomingSection = () => {
     <MovieSection
       title={t('Spotlight.sections.upcoming')}
       movies={results}
+      isLoading={isFetching}
       onEndReached={() => {
         if (results.length > 0 && page < totalPages && !isFetching) {
           trigger(page + 1);

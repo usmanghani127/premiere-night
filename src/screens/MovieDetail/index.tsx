@@ -1,3 +1,4 @@
+import { LoadingIndicator } from '@common/components/LoadingIndicator';
 import { TMDB_IMAGE_BASE_URL } from '@common/constants';
 import { useStore } from '@hooks/useStore';
 import MaterialDesignIcons from '@react-native-vector-icons/material-design-icons';
@@ -40,7 +41,8 @@ export const MovieDetail = () => {
   const { data: watchlist, dispatch } = useStore(
     state => state.watchlist.items,
   );
-  const { data: movieDetails } = detailsApi.useGetMovieDetailsQuery(movieId);
+  const { data: movieDetails, isLoading } =
+    detailsApi.useGetMovieDetailsQuery(movieId);
 
   const isInWatchlist = watchlist.includes(movieId);
 
@@ -67,7 +69,9 @@ export const MovieDetail = () => {
     }
   };
 
-  return (
+  return isLoading ? (
+    <LoadingIndicator />
+  ) : (
     <Container>
       <ContentScrollView>
         <PosterImage source={{ uri: posterUrl }} resizeMode="cover" />

@@ -1,18 +1,17 @@
 import { ListView } from '@common/components/ListView';
+import { LoadingIndicator } from '@common/components/LoadingIndicator';
 import { MovieCard } from '@common/components/MovieCard';
 import { useNavigation } from '@react-navigation/native';
 import { useLazySearchMovieQuery } from '@services/api/tmdb/search';
 import { Movie } from '@services/api/tmdb/types';
-import { Colors } from '@theme/colors';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { ActivityIndicator, FlatList, ListRenderItem } from 'react-native';
+import { FlatList, ListRenderItem } from 'react-native';
 import { Header } from './Header';
 import {
   Body,
   Container,
   listContentContainerStyle,
-  LoadingContainer,
   MovieCardContainer,
   NoResultsText,
 } from './styles';
@@ -70,9 +69,7 @@ export const Search = () => {
       <Header onSearch={handleSearch} />
       <Body>
         {isLoading && !data ? (
-          <LoadingContainer>
-            <ActivityIndicator size="large" color={Colors.primary} />
-          </LoadingContainer>
+          <LoadingIndicator />
         ) : (
           <ListView
             ref={listViewRef}

@@ -49,6 +49,7 @@ export const SectionTitle = styled(Text)<{ theme: DefaultTheme }>(
     fontSize: 20,
     fontWeight: 'bold',
     marginVertical: 10,
+    marginRight: 10,
     color: layout.isDarkMode ? Colors.white : Colors.black,
   }),
 );
