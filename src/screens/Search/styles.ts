@@ -13,9 +13,7 @@ export const Container = styled(SafeAreaView)<{ theme: DefaultTheme }>(
 
 export const Body = styled(View)<{ theme: DefaultTheme }>({
   flex: 1,
-  padding: 20,
-  alignItems: 'center',
-  justifyContent: 'center',
+  paddingTop: 10,
 });
 
 export const Label = styled(Text)<{ theme: DefaultTheme }>(
@@ -54,3 +52,25 @@ export const CancelText = styled(Text)({
   color: Colors.primary,
   fontSize: 16,
 });
+
+export const MovieCardContainer = styled(View)({
+  flex: 1,
+  margin: 8,
+});
+
+export const LoadingContainer = styled(View)({
+  flex: 1,
+  justifyContent: 'center',
+  alignItems: 'center',
+});
+
+export const NoResultsText = styled(Text)({
+  color: Colors.gray,
+  textAlign: 'center',
+  marginTop: 20,
+  fontSize: 16,
+});
+
+export const listContentContainerStyle = {
+  paddingBottom: 20,
+};

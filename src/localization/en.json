@@ -16,7 +16,8 @@
   "Search": {
     "label": "Search Screen...",
     "clear": "Clear",
-    "placeholder": "Search for movies..."
+    "placeholder": "Search for movies...",
+    "noResults": "No results found"
   },
   "MovieDetail": {
     "addToWatchlist": "Add to Watchlist",

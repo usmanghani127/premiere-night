@@ -7,7 +7,7 @@ import { useTranslation } from 'react-i18next';
 import { TextInput, useColorScheme } from 'react-native';
 import { BackButton, CancelButton, CancelText, HeaderRow } from './styles';
 
-export const Header = () => {
+export const Header = ({ onSearch }: { onSearch: (text: string) => void }) => {
   const { t } = useTranslation();
   const isDarkMode = useColorScheme() === 'dark';
   const navigation = useNavigation();
@@ -16,14 +16,14 @@ export const Header = () => {
   const searchBarRef = useRef<TextInput>(null);
 
   const setSearchString = (text: string) => {
-    if (text.length < 20) {
-      searchString.current = text;
-    }
+    searchString.current = text;
+    onSearch(text);
   };
 
   const handleClear = () => {
     searchBarRef.current?.clear();
     searchString.current = '';
+    onSearch('');
   };
 
   return (

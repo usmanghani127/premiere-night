@@ -1,4 +1,9 @@
-import React, { useRef, useState } from 'react';
+import React, {
+  forwardRef,
+  useImperativeHandle,
+  useRef,
+  useState,
+} from 'react';
 import { FlatList, FlatListProps } from 'react-native';
 import { ScrollToTopButton } from './ScrollToTopButton';
 import { StyledFlatList } from './styles';
@@ -8,36 +13,42 @@ export type ListViewProps<T> = Omit<
   'showsVerticalScrollIndicator' | 'showsHorizontalScrollIndicator'
 >;
 
-export function ListView<T>(props: ListViewProps<T>) {
-  const { horizontal } = props;
-  const flatListRef = useRef<FlatList<T>>(null);
-  const [showScrollToTop, setShowScrollToTop] = useState(false);
+export const ListView = forwardRef(
+  <T,>(props: ListViewProps<T>, ref: React.Ref<FlatList<T>>) => {
+    const { horizontal } = props;
+    const flatListRef = useRef<FlatList<T>>(null);
+    const [showScrollToTop, setShowScrollToTop] = useState(false);
 
-  const handleScroll = (event: any) => {
-    const offset = horizontal
-      ? event.nativeEvent.contentOffset.x
-      : event.nativeEvent.contentOffset.y;
-    setShowScrollToTop(offset > 200);
-    props.onScroll?.(event);
-  };
+    useImperativeHandle(ref, () => flatListRef.current as FlatList<T>);
 
-  const scrollToTop = () => {
-    flatListRef.current?.scrollToOffset({ offset: 0, animated: true });
-  };
+    const handleScroll = (event: any) => {
+      const offset = horizontal
+        ? event.nativeEvent.contentOffset.x
+        : event.nativeEvent.contentOffset.y;
+      setShowScrollToTop(offset > 200);
+      props.onScroll?.(event);
+    };
 
-  return (
-    <>
-      <StyledFlatList
-        ref={flatListRef}
-        {...(props as any)}
-        onScroll={handleScroll}
-        scrollEventThrottle={16}
-      />
-      <ScrollToTopButton
-        visible={showScrollToTop}
-        onPress={scrollToTop}
-        horizontal={horizontal ?? false}
-      />
-    </>
-  );
-}
+    const scrollToTop = () => {
+      flatListRef.current?.scrollToOffset({ offset: 0, animated: true });
+    };
+
+    return (
+      <>
+        <StyledFlatList
+          ref={flatListRef}
+          {...(props as any)}
+          onScroll={handleScroll}
+          scrollEventThrottle={16}
+        />
+        <ScrollToTopButton
+          visible={showScrollToTop}
+          onPress={scrollToTop}
+          horizontal={horizontal ?? false}
+        />
+      </>
+    );
+  },
+) as <T>(
+  props: ListViewProps<T> & { ref?: React.Ref<FlatList<T>> },
+) => React.ReactElement;
