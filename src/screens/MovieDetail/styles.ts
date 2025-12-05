@@ -17,9 +17,13 @@ export const ContentScrollView = styled(ScrollView).attrs({
 });
 
 export const PosterImage = styled(Image)<{ theme: DefaultTheme }>(
-  ({ theme: { layout = {} } = {} }) => ({
-    width: layout.windowDimensions?.width || 0,
-    height: (layout.windowDimensions?.width || 0) * 1.5,
+  ({
+    theme: {
+      layout: { isLandScape, smallerDimension, largerDimension } = {},
+    } = {},
+  }) => ({
+    width: '100%',
+    height: isLandScape ? smallerDimension : (largerDimension || 0) * 0.8,
   }),
 );
 
