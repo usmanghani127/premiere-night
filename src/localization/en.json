@@ -1,7 +1,13 @@
 {
   "Spotlight": {
     "tabBarLabel": "Spotlight",
-    "label": "Spotlight Screen..."
+    "label": "Spotlight Screen...",
+    "sections": {
+      "nowPlaying": "Now Playing",
+      "popular": "Popular",
+      "topRated": "Top Rated",
+      "upcoming": "Upcoming"
+    }
   },
   "Watchlist": {
     "tabBarLabel": "Watchlist",

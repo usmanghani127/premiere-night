@@ -1,6 +1,6 @@
 import { combineReducers } from '@reduxjs/toolkit';
-import { MoviesReducer } from './movies';
+import { tmdbApi } from '../api/tmdb';
 
 export const rootReducer = combineReducers({
-  movies: MoviesReducer,
+  [tmdbApi.reducerPath]: tmdbApi.reducer,
 });

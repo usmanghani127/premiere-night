@@ -26,6 +26,8 @@ const persistConfig: PersistConfig<RootState> = {
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
+import { tmdbApi } from '../api/tmdb';
+
 export const store = configureStore({
   reducer: persistedReducer,
   enhancers: getDefaultEnhancers =>
@@ -38,7 +40,9 @@ export const store = configureStore({
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
         warnAfter: 128,
       },
-    }).prepend(...middlewares) as ReturnType<typeof getDefaultMiddleware>,
+    })
+      .prepend(tmdbApi.middleware)
+      .concat(...middlewares) as any,
   devTools: __DEV__,
 });
 

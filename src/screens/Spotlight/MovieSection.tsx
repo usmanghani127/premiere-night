@@ -1,6 +1,6 @@
 import { ListView } from '@common/components/ListView';
 import { MovieCard } from '@common/components/MovieCard';
-import { Movie } from '@services/redux/movies/types';
+import { Movie } from '@services/api/tmdb/types';
 import { ListRenderItem } from 'react-native';
 import { SectionContainer, SectionHeaderRow, SectionTitle } from './styles';
 

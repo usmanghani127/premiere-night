@@ -1,5 +1,5 @@
 import MaterialDesignIcons from '@react-native-vector-icons/material-design-icons';
-import { Movie } from '@services/redux/movies/types';
+import { Movie } from '@services/api/tmdb/types';
 import { Colors } from '@theme/colors';
 import React from 'react';
 import {
