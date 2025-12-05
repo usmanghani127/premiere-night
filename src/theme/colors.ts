@@ -9,6 +9,7 @@ export const Colors = {
   lightGray: '#F0F0F0',
   gray: '#888888',
   darkGray: '#333333',
+  red: '#FF5252',
 };
 
 export const PaperTheme = {

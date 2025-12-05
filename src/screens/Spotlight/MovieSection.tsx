@@ -1,7 +1,9 @@
 import { ListView } from '@common/components/ListView';
 import { MovieCard } from '@common/components/MovieCard';
+import { AppNavigatorProps } from '@navigation/types';
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { Movie } from '@services/api/tmdb/types';
-import { ListRenderItem } from 'react-native';
 import { SectionContainer, SectionHeaderRow, SectionTitle } from './styles';
 
 type MovieSectionProps = {
@@ -15,12 +17,9 @@ export const MovieSection: React.FC<MovieSectionProps> = ({
   movies,
   onEndReached,
 }) => {
-  const renderMovie: ListRenderItem<Movie> = ({ item }) => (
-    <MovieCard
-      movie={item}
-      onPress={() => console.log('Movie pressed:', item.title)}
-    />
-  );
+  const navigation =
+    useNavigation<NativeStackNavigationProp<AppNavigatorProps, 'Spotlight'>>();
+
   return (
     <SectionContainer>
       <SectionHeaderRow>
@@ -29,7 +28,14 @@ export const MovieSection: React.FC<MovieSectionProps> = ({
       <ListView
         horizontal
         data={movies}
-        renderItem={renderMovie}
+        renderItem={({ item }) => (
+          <MovieCard
+            movie={item}
+            onPress={() =>
+              navigation.navigate('MovieDetail', { movieId: item.id })
+            }
+          />
+        )}
         keyExtractor={(item: Movie) => item.id.toString()}
         onEndReached={onEndReached}
         onEndReachedThreshold={0.5}

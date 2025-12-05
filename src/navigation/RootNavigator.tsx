@@ -1,6 +1,7 @@
 import { BottomTabs } from '@navigation/BottomTabNavigator';
 import { RootNavigatorParamList } from '@navigation/types';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { MovieDetail } from '@screens/MovieDetail';
 import { Search } from '@screens/Search';
 import React from 'react';
 
@@ -19,6 +20,15 @@ export const RootNavigator = () => {
     >
       <Stack.Screen name="BottomTabs" component={BottomTabs} />
       <Stack.Screen name="Search" component={Search} />
+      <Stack.Screen
+        name="MovieDetail"
+        component={MovieDetail}
+        options={{
+          headerShown: true,
+          headerTransparent: true,
+          headerBackVisible: true,
+        }}
+      />
     </Stack.Navigator>
   );
 };

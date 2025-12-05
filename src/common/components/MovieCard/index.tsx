@@ -1,3 +1,4 @@
+import { TMDB_IMAGE_BASE_URL } from '@common/constants';
 import MaterialDesignIcons from '@react-native-vector-icons/material-design-icons';
 import { Movie } from '@services/api/tmdb/types';
 import { Colors } from '@theme/colors';
@@ -16,11 +17,9 @@ export type MovieCardProps = {
   onPress?: () => void;
 };
 
-const TMDB_IMAGE_BASE_URL = 'https://image.tmdb.org/t/p/w342';
-
 export const MovieCard: React.FC<MovieCardProps> = ({ movie, onPress }) => {
   const { posterPath = '', title = '', voteAverage = 0 } = movie;
-  const posterUrl = `${TMDB_IMAGE_BASE_URL}${posterPath}`;
+  const posterUrl = `${TMDB_IMAGE_BASE_URL.w342}${posterPath}`;
 
   return (
     <Card onPress={onPress}>

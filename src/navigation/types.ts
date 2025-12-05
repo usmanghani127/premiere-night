@@ -1,6 +1,9 @@
+import { Movie } from '@services/api/tmdb/types';
+
 export type RootNavigatorParamList = {
   BottomTabs: undefined;
   Search: undefined;
+  MovieDetail: { movieId: Movie['id'] };
 };
 
 export type BottomTabNavigatorParamList = {

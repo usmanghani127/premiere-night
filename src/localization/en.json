@@ -17,5 +17,11 @@
     "label": "Search Screen...",
     "clear": "Clear",
     "placeholder": "Search for movies..."
+  },
+  "MovieDetail": {
+    "addToWatchlist": "Add to Watchlist",
+    "removeFromWatchlist": "Remove from Watchlist",
+    "synopsis": "Synopsis",
+    "runtime": "minutes"
   }
 }
