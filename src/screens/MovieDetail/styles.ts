@@ -139,12 +139,29 @@ export const WatchlistButton = styled(TouchableOpacity)<{ isAdded: boolean }>(
     borderRadius: 10,
     alignItems: 'center',
     marginTop: 20,
-    marginBottom: 40,
+    marginBottom: 5,
   }),
 );
 
 export const WatchlistButtonText = styled(Text)({
   color: Colors.white,
+  fontSize: 16,
+  fontWeight: 'bold',
+});
+
+export const ShareButton = styled(TouchableOpacity)({
+  backgroundColor: 'transparent',
+  borderWidth: 2,
+  borderColor: Colors.primary,
+  paddingVertical: 10,
+  borderRadius: 10,
+  alignItems: 'center',
+  marginTop: 5,
+  marginBottom: 10,
+});
+
+export const ShareButtonText = styled(Text)({
+  color: Colors.primary,
   fontSize: 16,
   fontWeight: 'bold',
 });

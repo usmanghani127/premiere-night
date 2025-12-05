@@ -55,5 +55,16 @@
 	<array>
 		<string>MaterialDesignIcons.ttf</string>
 	</array>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>mytheresa</string>
+			</array>
+			<key>CFBundleURLName</key>
+			<string>com.premierenight</string>
+		</dict>
+	</array>
 </dict>
 </plist>

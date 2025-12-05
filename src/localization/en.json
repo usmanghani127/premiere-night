@@ -24,6 +24,7 @@
     "addToWatchlist": "Add to Watchlist",
     "removeFromWatchlist": "Remove from Watchlist",
     "synopsis": "Synopsis",
-    "runtime": "minutes"
+    "runtime": "minutes",
+    "share": "Share"
   }
 }

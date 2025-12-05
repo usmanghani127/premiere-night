@@ -1,3 +1,4 @@
+import { useDeepLinks } from '@hooks/useDeepLinks';
 import { BottomTabs } from '@navigation/BottomTabNavigator';
 import { RootNavigatorParamList } from '@navigation/types';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -8,6 +9,8 @@ import React from 'react';
 const Stack = createNativeStackNavigator<RootNavigatorParamList>();
 
 export const RootNavigator = () => {
+  useDeepLinks();
+
   return (
     <Stack.Navigator
       screenOptions={{
