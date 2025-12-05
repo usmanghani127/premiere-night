@@ -7,11 +7,13 @@ import { SectionContainer, SectionHeaderRow, SectionTitle } from './styles';
 type MovieSectionProps = {
   title: string;
   movies: Movie[];
+  onEndReached?: () => void;
 };
 
 export const MovieSection: React.FC<MovieSectionProps> = ({
   title,
   movies,
+  onEndReached,
 }) => {
   const renderMovie: ListRenderItem<Movie> = ({ item }) => (
     <MovieCard
@@ -29,6 +31,8 @@ export const MovieSection: React.FC<MovieSectionProps> = ({
         data={movies}
         renderItem={renderMovie}
         keyExtractor={(item: Movie) => item.id.toString()}
+        onEndReached={onEndReached}
+        onEndReachedThreshold={0.5}
       />
     </SectionContainer>
   );
