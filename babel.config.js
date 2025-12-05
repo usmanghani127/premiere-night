@@ -23,5 +23,6 @@ module.exports = {
       },
       'babel-plugin-react-compiler',
     ],
+    ['module:react-native-dotenv'],
   ],
 };
