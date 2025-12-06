@@ -1,4 +1,4 @@
-import { MaterialDesignIcons } from '@react-native-vector-icons/material-design-icons';
+import { BookmarkIcon } from '@common/components/MovieCard/styles';
 
 export const WatchlistTabIcon = ({
   color,
@@ -7,5 +7,5 @@ export const WatchlistTabIcon = ({
   color: string;
   size: number;
 }) => {
-  return <MaterialDesignIcons name="bookmark" size={size} color={color} />;
+  return <BookmarkIcon name="bookmark" size={size} color={color} />;
 };

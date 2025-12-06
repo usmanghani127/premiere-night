@@ -1,3 +1,4 @@
+import MaterialDesignIcons from '@react-native-vector-icons/material-design-icons';
 import { Colors } from '@theme/colors';
 import { Image, Text, TouchableOpacity, View } from 'react-native';
 import styled, { DefaultTheme } from 'styled-components';
@@ -23,6 +24,7 @@ export const PosterImage = styled(Image)<{ theme: DefaultTheme }>(
 );
 
 export const InfoContainer = styled(View)({
+  flex: 1,
   padding: 10,
   justifyContent: 'space-between',
 });
@@ -54,3 +56,13 @@ export const ActionButton = styled(TouchableOpacity)({
   borderRadius: 20,
   padding: 6,
 });
+
+export const BookmarkIcon = styled(MaterialDesignIcons)({
+  size: 20,
+  color: Colors.white,
+});
+
+export const StarIcon = styled(MaterialDesignIcons).attrs({
+  size: 15,
+  color: Colors.primary,
+})({});

@@ -1,3 +1,4 @@
+import MaterialDesignIcons from '@react-native-vector-icons/material-design-icons';
 import { Colors } from '@theme/colors';
 import { Text, TouchableOpacity, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -39,6 +40,12 @@ export const BackButton = styled(TouchableOpacity).attrs({
   padding: 8,
   marginRight: 5,
 });
+
+export const BackIcon = styled(MaterialDesignIcons).attrs({
+  size: 24,
+})<{ theme: DefaultTheme }>(({ theme }) => ({
+  color: theme.layout.isDarkMode ? Colors.white : Colors.black,
+}));
 
 export const CancelButton = styled(TouchableOpacity).attrs({
   activeOpacity: 0.7,

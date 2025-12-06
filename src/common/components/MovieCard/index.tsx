@@ -1,16 +1,16 @@
 import { TMDB_IMAGE_BASE_URL } from '@common/constants';
 import { useStore } from '@hooks/useStore';
-import MaterialDesignIcons from '@react-native-vector-icons/material-design-icons';
 import { WatchlistActions } from '@services/redux/watchlist';
-import { Colors } from '@theme/colors';
 import React from 'react';
 import {
   ActionButton,
+  BookmarkIcon,
   Card,
   InfoContainer,
   PosterImage,
   Rating,
   RatingContainer,
+  StarIcon,
   Title,
 } from './styles';
 
@@ -61,16 +61,12 @@ export const MovieCard: React.FC<MovieCardProps> = ({
     <Card onPress={onPress} width={width}>
       <PosterImage source={{ uri: imageUrl }} resizeMode="cover" />
       <ActionButton onPress={onPressActionButton}>
-        <MaterialDesignIcons
-          name={isWatchlisted ? 'bookmark' : 'bookmark-outline'}
-          size={20}
-          color={Colors.white}
-        />
+        <BookmarkIcon name={isWatchlisted ? 'bookmark' : 'bookmark-outline'} />
       </ActionButton>
       <InfoContainer>
         <Title numberOfLines={2}>{title}</Title>
         <RatingContainer>
-          <MaterialDesignIcons name="star" size={15} color={Colors.primary} />
+          <StarIcon name="star" />
           <Rating> {voteAverage.toFixed(1)}</Rating>
         </RatingContainer>
       </InfoContainer>

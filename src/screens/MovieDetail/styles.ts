@@ -1,3 +1,4 @@
+import MaterialDesignIcons from '@react-native-vector-icons/material-design-icons';
 import { Colors } from '@theme/colors';
 import { Image, ScrollView, Text, TouchableOpacity, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -71,6 +72,11 @@ export const RatingContainer = styled(View)({
   borderRadius: 4,
   marginRight: 15,
 });
+
+export const StarIcon = styled(MaterialDesignIcons).attrs({
+  size: 16,
+  color: Colors.white,
+})({});
 
 export const RatingText = styled(Text)({
   color: Colors.white,

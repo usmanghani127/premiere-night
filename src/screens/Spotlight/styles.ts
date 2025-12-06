@@ -1,3 +1,4 @@
+import MaterialDesignIcons from '@react-native-vector-icons/material-design-icons';
 import { Colors } from '@theme/colors';
 import { ScrollView, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -61,3 +62,7 @@ export const HeaderRow = styled(View)<{ theme: DefaultTheme }>(({ theme }) => ({
   backgroundColor: theme.layout.isDarkMode ? Colors.black : Colors.white,
   paddingVertical: 5,
 }));
+
+export const MovieTabIcon = styled(MaterialDesignIcons).attrs({})({});
+
+export const WatchlistTabIcon = styled(MaterialDesignIcons).attrs({})({});

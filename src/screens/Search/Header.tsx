@@ -1,15 +1,18 @@
 import { SearchBar } from '@common/components/SearchBar';
-import MaterialDesignIcons from '@react-native-vector-icons/material-design-icons';
 import { useNavigation } from '@react-navigation/native';
-import { Colors } from '@theme/colors';
 import { useRef } from 'react';
 import { useTranslation } from 'react-i18next';
-import { TextInput, useColorScheme } from 'react-native';
-import { BackButton, CancelButton, CancelText, HeaderRow } from './styles';
+import { TextInput } from 'react-native';
+import {
+  BackButton,
+  BackIcon,
+  CancelButton,
+  CancelText,
+  HeaderRow,
+} from './styles';
 
 export const Header = ({ onSearch }: { onSearch: (text: string) => void }) => {
   const { t } = useTranslation();
-  const isDarkMode = useColorScheme() === 'dark';
   const navigation = useNavigation();
 
   const searchString = useRef('');
@@ -29,11 +32,7 @@ export const Header = ({ onSearch }: { onSearch: (text: string) => void }) => {
   return (
     <HeaderRow>
       <BackButton onPress={navigation.goBack}>
-        <MaterialDesignIcons
-          name="arrow-left"
-          size={24}
-          color={isDarkMode ? Colors.white : Colors.black}
-        />
+        <BackIcon name="arrow-left" />
       </BackButton>
       <SearchBar
         ref={searchBarRef}

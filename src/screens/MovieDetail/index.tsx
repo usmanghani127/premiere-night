@@ -1,11 +1,9 @@
 import { LoadingIndicator } from '@common/components/LoadingIndicator';
 import { TMDB_IMAGE_BASE_URL } from '@common/constants';
 import { useStore } from '@hooks/useStore';
-import MaterialDesignIcons from '@react-native-vector-icons/material-design-icons';
 import { RouteProp, useRoute } from '@react-navigation/native';
 import { detailsApi } from '@services/api/tmdb/details';
 import { WatchlistActions } from '@services/redux/watchlist';
-import { Colors } from '@theme/colors';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Share } from 'react-native';
@@ -28,6 +26,7 @@ import {
   SectionTitle,
   ShareButton,
   ShareButtonText,
+  StarIcon,
   Synopsis,
   Tagline,
   Title,
@@ -96,7 +95,7 @@ export const MovieDetail = () => {
 
           <MetaRow>
             <RatingContainer>
-              <MaterialDesignIcons name="star" size={16} color={Colors.white} />
+              <StarIcon name="star" />
               <RatingText>{voteAverage.toFixed(1)}</RatingText>
             </RatingContainer>
             <MetaText>{releaseDate?.split('-')?.[0]}</MetaText>

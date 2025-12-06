@@ -1,4 +1,4 @@
-import { MaterialDesignIcons } from '@react-native-vector-icons/material-design-icons';
+import { MovieTabIcon } from './styles';
 
 export const SpotlightTabIcon = ({
   color,
@@ -7,5 +7,5 @@ export const SpotlightTabIcon = ({
   color: string;
   size: number;
 }) => {
-  return <MaterialDesignIcons name="movie" size={size} color={color} />;
+  return <MovieTabIcon name="movie" size={size} color={color} />;
 };
